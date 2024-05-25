@@ -1,0 +1,1 @@
+{"name":"Local: testtt","url":"d:\\COding\\AppDEV(Flutter)\\testtt.cpp","tests":[{"id":1716105882536,"input":"4 3\n1 2 3\n2 3 11\n3 4 12\n1\n2\n1 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\COding\\AppDEV(Flutter)\\testtt.cpp","group":"local","local":true}
