@@ -1,0 +1,51 @@
+[
+    {
+        "expiry": "2024-05-30",
+        "pcr": 1.38,
+        "strike_price": 22950.0,
+        "underlying_key": "NSE_INDEX|Nifty 50",
+        "underlying_spot_price": 22957.1,
+        "call_options": {
+            "instrument_key": "NSE_FO|56935",
+            "market_data": {
+                "ltp": 183.0,
+                "volume": 41125850,
+                "oi": 1355950.0,
+                "close_price": 191.4,
+                "bid_price": 183.65,
+                "bid_qty": 275,
+                "ask_price": 186.0,
+                "ask_qty": 1450,
+                "prev_oi": 720275.0
+            },
+            "option_greeks": {
+                "vega": 11.5883,
+                "theta": -12.2593,
+                "gamma": 0.001,
+                "delta": 0.5707,
+                "iv": 12.7
+            }
+        },
+        "put_options": {
+            "instrument_key": "NSE_FO|56936",
+            "market_data": {
+                "ltp": 116.75,
+                "volume": 50053100,
+                "oi": 1871275.0,
+                "close_price": 143.2,
+                "bid_price": 116.75,
+                "bid_qty": 225,
+                "ask_price": 118.0,
+                "ask_qty": 50,
+                "prev_oi": 620000.0
+            },
+            "option_greeks": {
+                "vega": 11.5864,
+                "theta": -12.1907,
+                "gamma": 0.0011,
+                "delta": -0.4289,
+                "iv": 12.63
+            }
+        }
+    }
+]
