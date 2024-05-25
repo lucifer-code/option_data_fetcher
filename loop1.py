@@ -18,10 +18,13 @@ def fetch_and_save_data():
     if response.status_code == 200:
         data = response.json()
         if 'data' in data:
+            spot_price = data['data'][0]['underlying_spot_price']  # Extract spot price
+            # Filter out strike prices 20 above and below the spot price
+            filtered_data = [option for option in data['data'] if abs(option['strike_price'] - spot_price) <= 20]
             timestamp = time.strftime('%Y-%m-%d_%H-%M-%S')
             json_filename = f'data_{timestamp}.json'
             with open(json_filename, 'w') as f:
-                json.dump(data['data'], f, indent=4)
+                json.dump(filtered_data, f, indent=4)
             print(f"Data saved as {json_filename}")
         else:
             print("No data available.")
