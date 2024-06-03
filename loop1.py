@@ -1,12 +1,16 @@
 import time
 import requests
 import json
+from datetime import datetime, timedelta
 
-def fetch_and_save_data():
+expiry_date = datetime.strptime('2024-05-30', '%Y-%m-%d')
+
+def fetch_and_save_data(expiry_date):
+    # Fetch data from API
     url = 'https://api.upstox.com/v2/option/chain'
     params = {
         'instrument_key': 'NSE_INDEX|Nifty 50',
-        'expiry_date': '2024-05-30'
+        'expiry_date': expiry_date.strftime('%Y-%m-%d')
     }
 
     headers = {
@@ -28,9 +32,18 @@ def fetch_and_save_data():
     else:
         print(f"Failed to fetch data. Status code: {response.status_code}")
 
+    return expiry_date
+
 def main():
+    global expiry_date
     while True:
-        fetch_and_save_data()
+        # Check if the current date is past the expiry date and update it if necessary
+        current_date = datetime.now()
+        if current_date.date() > expiry_date.date():
+            expiry_date += timedelta(days=7)
+            print(f"Expiry date updated to {expiry_date.strftime('%Y-%m-%d')}")
+
+        fetch_and_save_data(expiry_date)
         time.sleep(10)  # Wait for 10 seconds before fetching data again
 
 if __name__ == "__main__":
