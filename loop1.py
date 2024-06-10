@@ -3,6 +3,7 @@ import requests
 import json
 from datetime import datetime, timedelta
 
+# Initialize the expiry date
 expiry_date = datetime.strptime('2024-05-30', '%Y-%m-%d')
 
 def fetch_and_save_data(expiry_date):
@@ -32,15 +33,20 @@ def fetch_and_save_data(expiry_date):
     else:
         print(f"Failed to fetch data. Status code: {response.status_code}")
 
-    return expiry_date
-
 def main():
     global expiry_date
     while True:
-        # Check if the current date is past the expiry date and update it if necessary
+        # Get the current date
         current_date = datetime.now()
-        if current_date.date() > expiry_date.date():
-            expiry_date += timedelta(days=7)
+        
+        # Calculate the difference in days between current date and expiry date
+        days_difference = (current_date - expiry_date).days
+        
+        if days_difference > 0:
+            # Calculate number of weeks between current date and expiry date
+            weeks_difference = (days_difference // 7) + 1
+            # Update expiry date to n*7 days ahead
+            expiry_date += timedelta(weeks=weeks_difference)
             print(f"Expiry date updated to {expiry_date.strftime('%Y-%m-%d')}")
 
         fetch_and_save_data(expiry_date)
